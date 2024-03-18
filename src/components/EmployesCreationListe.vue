@@ -1,5 +1,5 @@
 <template>
-    <h3>Employes auroris&eacute;s<br><span class=typeaffaire>pour {{ lesData.typeAffaire }}</span></h3>
+    <h3>Employes autoris&eacute;s<br><span class=typeaffaire>pour {{ lesData.typeAffaire }}</span></h3>
     <ul>
         <template v-for="employeCreation in lesData.employesCreation" v-bind:key="employeCreation.idemploye">
             <li>

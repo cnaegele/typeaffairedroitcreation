@@ -1,8 +1,12 @@
 import { ref, computed } from 'vue'
 import axios from 'axios'
+let g_devurl = ''
+if (import.meta.env.DEV) {
+    g_devurl = 'https://mygolux.lausanne.ch'    
+}
 
 export async function getDataUserInfo(groupeSecurite, lesData) {
-    const urlui = 'https://mygolux.lausanne.ch/goeland/gestion_spec/g_login_f5.php'
+    const urlui = `${g_devurl}/goeland/gestion_spec/g_login_f5.php`
     const params = new URLSearchParams([['groupesecurite', groupeSecurite]])
     const response = await axios.get(urlui, { params })   
     const userInfo = response.data
@@ -15,7 +19,7 @@ export async function getDataUserInfo(groupeSecurite, lesData) {
 }
 
 export async function getDataTypesAffaireListe(lesData) {
-    const urlta = 'https://mygolux.lausanne.ch/goeland/gestion_spec/typeaffaire_droitcreation/ajax/typesaffaire_liste.php'
+    const urlta = `${g_devurl}/goeland/gestion_spec/typeaffaire_droitcreation/ajax/typesaffaire_liste.php`
     const response = await axios.get(urlta)   
     const typesAffaire = response.data
     lesData.typesAffaire = ref(typesAffaire)
@@ -24,7 +28,7 @@ export async function getDataTypesAffaireListe(lesData) {
 
 export async function getDataEmployesCreationListe(lesData) {
     const idTypeAffaire = lesData.idTypeAffaire
-    const urlec = 'https://mygolux.lausanne.ch/goeland/gestion_spec/typeaffaire_droitcreation/ajax/typeaffaire_employes_creation_liste.php'
+    const urlec = `${g_devurl}/goeland/gestion_spec/typeaffaire_droitcreation/ajax/typeaffaire_employes_creation_liste.php`
     const params = new URLSearchParams([['idtypeaffaire', idTypeAffaire]])
     const response = await axios.get(urlec, {params})   
     const employesCreation = response.data
@@ -40,7 +44,7 @@ export async function getDataEmployesListe(lesData) {
         if (critereEmployesInactifs) {
             bretInactif = 'true'    
         }
-        const urlem = 'https://mygolux.lausanne.ch/goeland/gestion_spec/typeaffaire_droitcreation/ajax/employes_liste.php';
+        const urlem = `${g_devurl}/goeland/gestion_spec/typeaffaire_droitcreation/ajax/employes_liste.php`;
         const params = new URLSearchParams([['scritere', critereEmployes], ['bretinactif', bretInactif]]);
         const response = await axios.get(urlem, {params})   
         const employesListe = response.data
@@ -58,7 +62,7 @@ export async function sauveTypeAffaireEmployeCreation(idEmploye, lesData) {
         idemploye: idEmploye
     }
     const jdata = JSON.stringify(odata)
-    const urlsa = 'https://mygolux.lausanne.ch/goeland/gestion_spec/typeaffaire_droitcreation/ajax/typeaffaire_employes_creation_sauve.php'
+    const urlsa = `${g_devurl}/goeland/gestion_spec/typeaffaire_droitcreation/ajax/typeaffaire_employes_creation_sauve.php`
     const response = await axios.post(urlsa, jdata, {
         headers: {
             'Content-Type': 'application/json'
@@ -78,7 +82,7 @@ export async function supprimeTypeAffaireEmployeCreation(idEmploye, lesData) {
         idemploye: idEmploye
     }
     const jdata = JSON.stringify(odata)
-    const urlsa = 'https://mygolux.lausanne.ch/goeland/gestion_spec/typeaffaire_droitcreation/ajax/typeaffaire_employes_creation_sauve.php'
+    const urlsa = `${g_devurl}/goeland/gestion_spec/typeaffaire_droitcreation/ajax/typeaffaire_employes_creation_sauve.php`
     const response = await axios.post(urlsa, jdata, {
         headers: {
             'Content-Type': 'application/json'

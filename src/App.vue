@@ -8,18 +8,19 @@
 
   <main>
     <div id="app">
+      <div v-if="lesData.messageErreur != ''" id="divErreur">{{ lesData.messageErreur }}</div>
       <div><UserInformation groupeSecurite="GoelandManager"></UserInformation></div>
       <div v-if="lesData.bInGroupe == 0">Utilisation autoris&eacute;e uniquement aux membres du groupe {{ lesData.groupeSecurite }}</div>
       <div v-if="lesData.bInGroupe == 1" class="flex-container">
         <div>
-              <TypesAffaireListe></TypesAffaireListe>
-          </div>
-          <div>
-              <EmployesCreationListe></EmployesCreationListe>
-          </div>
-          <div>
-              <EmployesListe></EmployesListe>
-          </div>
+          <TypesAffaireListe></TypesAffaireListe>
+        </div>
+         <div>
+            <EmployesCreationListe></EmployesCreationListe>
+        </div>
+        <div>
+            <EmployesListe></EmployesListe>
+        </div>
       </div>
     </div>
   </main>

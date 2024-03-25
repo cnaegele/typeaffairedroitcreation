@@ -18,5 +18,6 @@ export const data = defineStore({
       critereEmployesInactifs: ref(false),
       employesListe: ref([]),
       idEmployeChoix:ref(0),
+      messageErreur:ref('')
   })
 })

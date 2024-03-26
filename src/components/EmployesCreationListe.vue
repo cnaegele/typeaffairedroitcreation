@@ -1,5 +1,5 @@
 <template>
-    <h3>Employes autoris&eacute;s<br><span class=typeaffaire>pour {{ lesData.typeAffaire }}</span></h3>
+    <h3>Employes autoris&eacute;s<br><span v-if="lesData.idTypeAffaire > 0" class=typeaffaire>pour {{ lesData.typeAffaire }} ({{ lesData.idTypeAffaire }})</span></h3>
     <ul>
         <template v-for="employeCreation in lesData.employesCreation" v-bind:key="employeCreation.idemploye">
             <li>
@@ -14,7 +14,7 @@
 <script setup>
     import { ref } from 'vue'
     import { data } from '@/stores/data.js'
-    import { supprimeTypeAffaireEmployeCreation } from '@/typeaffairedroitcreation'
+    import { supprimeTypeAffaireEmployeCreation } from '@/typeaffairedroitcreation.js'
     let lesData = data()
 
     function typeaffaireEmployecreationSupprime(idEmploye) {

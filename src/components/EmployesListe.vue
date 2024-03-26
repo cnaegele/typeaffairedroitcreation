@@ -1,5 +1,5 @@
 <template>
-    <h3>Ajout d'employ&eacute;s<br><span class=typeaffaire>pour {{ lesData.typeAffaire }}</span></h3>
+    <h3>Ajout d'employ&eacute;s<br><span v-if="lesData.idTypeAffaire > 0" class=typeaffaire>pour {{ lesData.typeAffaire }} ({{ lesData.idTypeAffaire }})</span></h3>
     <input type="text" v-model="state.critereEmployes" v-on:keyup="listeEmployes" placeholder="- nom pr&eacute;nom login -">&nbsp;
     <input type="checkbox" id="chkRetInactif" v-model="state.bRetInactif" v-on:change="listeEmployes"><label for="chkRetInactif">avec les employ&eacute;s d&eacute;sactiv&eacute;s</label>
     <ul>
@@ -21,8 +21,8 @@
 <script setup>
     import {reactive, ref} from 'vue'
     import { data } from '@/stores/data.js'
-    import { getDataEmployesListe } from '@/typeaffairedroitcreation'
-    import { sauveTypeAffaireEmployeCreation } from '@/typeaffairedroitcreation'
+    import { getDataEmployesListe } from '@/typeaffairedroitcreation.js'
+    import { sauveTypeAffaireEmployeCreation } from '@/typeaffairedroitcreation.js'
    let state = reactive({
         critereEmployes: "",
         bRetInactif: false   

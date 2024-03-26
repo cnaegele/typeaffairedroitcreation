@@ -3,7 +3,7 @@
 </template>
 <script setup>
     import { data } from '@/stores/data.js'
-    import { getDataUserInfo } from '@/typeaffairedroitcreation'
+    import { getDataUserInfo } from '@/typeaffairedroitcreation.js'
     const props = defineProps({
         groupeSecurite: {
             type: String,

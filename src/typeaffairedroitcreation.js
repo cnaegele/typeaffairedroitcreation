@@ -85,6 +85,9 @@ export async function sauveTypeAffaireEmployeCreation(idEmploye, lesData) {
             traiteAxiosError(error, lesData)
         })      
     console.log(response.data)
+    if (response.data.message.indexOf('ERREUR') == 0) {
+        lesData.messageErreur =  response.data.message   
+    }
     getDataEmployesCreationListe(lesData)
 }
 
@@ -123,4 +126,3 @@ function traiteAxiosError(error, lesData) {
         lesData.messageErreur = error.message
     }
 }
-

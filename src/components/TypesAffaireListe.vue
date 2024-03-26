@@ -11,8 +11,8 @@
 <script setup>
     import { ref } from 'vue'
     import { data } from '@/stores/data.js'
-    import { getDataTypesAffaireListe } from '@/typeaffairedroitcreation'
-    import { getDataEmployesCreationListe } from '@/typeaffairedroitcreation'
+    import { getDataTypesAffaireListe } from '@/typeaffairedroitcreation.js'
+    import { getDataEmployesCreationListe } from '@/typeaffairedroitcreation.js'
     let lesData = data()
     getDataTypesAffaireListe(lesData)
 
